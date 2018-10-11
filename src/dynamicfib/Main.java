@@ -10,6 +10,9 @@ public class Main {
 		String in = input.next();
 		try {
 			int n = Integer.parseInt(in);
+			if (n < 0) {
+				throw new NumberFormatException();
+			}
 			System.out.println(dynamicFibo(n));
 			System.out.println(recursiveFibo(n));
 		} catch (NumberFormatException e) {
@@ -29,9 +32,6 @@ public class Main {
 		else if (n == 1) {
 			return 1;
 		}
-		else if (n < 0) {
-			return -1;
-		}
 		long[] storage = new long[n + 1];
 		storage[0] = 0;
 		storage[1] = 1;
@@ -47,9 +47,6 @@ public class Main {
 		}
 		else if (n == 1) {
 			return 1L;
-		}
-		else if (n < 0) {
-			return -1L;
 		}
 		else {
 			return recursiveFibo(n - 1) + recursiveFibo(n - 2);
