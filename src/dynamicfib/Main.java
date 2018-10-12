@@ -32,13 +32,26 @@ public class Main {
 		else if (n == 1) {
 			return 1;
 		}
-		long[] storage = new long[n + 1];
+		long[] storage = new long[2];
 		storage[0] = 0;
 		storage[1] = 1;
+		boolean use0 = true;
 		for (int counter = 2; counter <= n; counter++) {
-			storage[counter] = storage[counter - 1] + storage[counter - 2];
+			if (use0) {
+				storage[0] = storage[0] + storage[1];
+				use0 = false;
+			}
+			else {
+				storage[1] = storage[0] + storage[1];
+				use0 = true;
+			}
 		}
-		return storage[n];
+		if (use0) {
+			return storage[1];
+		}
+		else {
+			return storage[0];
+		}
 	}
 	
 	public static long recursiveFibo(int n) {
